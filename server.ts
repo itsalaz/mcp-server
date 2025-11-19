@@ -1,5 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { z } from "zod"
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 
 
 const server = new McpServer({
@@ -104,3 +105,19 @@ server.resource(
         - New York(USA)`
     }
 )
+
+// Challenge:
+// Inside the async function:
+// 1. Define the stdio transport by creating a `const transport` object with a new instance of `StdioServerTransport`
+// 2. Connect the server using `await server.connect(transport)`
+// 3. Print status messages to the terminal using `console.error()` to indicate the server is running.
+
+async function init() {
+    const transport = new StdioServerTransport()
+    await server.connect(transport)
+    console.error('Weather MCP Server Started!')
+    console.error('Tool: getWeatherDataByCityName')
+    console.error('Supported Cities: New York, London')
+    console.error('Server Ready! ')
+}
+init().catch(console.error)
