@@ -78,7 +78,7 @@ server.resource(
 
     // Data Function: An async function that returns the actual content of the resource
 
-    async => {
+    async() => {
     return `Supported Airports:
     - JFK (New York)
     - LHR (London Heathrow)
@@ -94,3 +94,13 @@ server.resource(
  * Set content type to 'text/plain'
  */
 
+server.resource(
+    'weather://cities',
+    'List of supported cities',
+    'text/plain',
+    async() => {
+        return `Supported Cities:
+        - London(UK)
+        - New York(USA)`
+    }
+)
