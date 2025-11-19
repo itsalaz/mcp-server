@@ -64,4 +64,33 @@ server.tool(
     }
 )
 
+// Registering a static resource on the MCP server
+server.resource(
+    // URI: A unique identifier for this resource
+    'flights://airports',
+
+    //Description: Explains what this resource provides
+    'List of supported airport codes',
+
+    //MIME Type: Describes the format of the data being returned
+
+    'text/plain',
+
+    // Data Function: An async function that returns the actual content of the resource
+
+    async => {
+    return `Supported Airports:
+    - JFK (New York)
+    - LHR (London Heathrow)
+    - SFO (San Francisco)`;
+    }
+)
+
+
+/**
+ * Challenge: Create a static resource for the weather tool
+ * Use URI: weather://cities
+ * Return a plain text list of supported cities (e.g. London and New York)
+ * Set content type to 'text/plain'
+ */
 
